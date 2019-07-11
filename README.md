@@ -7,15 +7,18 @@ Design a web application that allows employees to submit feedback toward each ot
 *Partial solutions are acceptable.*  It is not necessary to submit a complete solution that implements every requirement.
 
 ## Assumptions
-1. There does not have to be any validation or authorization on the endpoint.
-2. There does not have to be any login page for the user.
-3. The Employees should have names and a position.
-4. When an employee is added to take part of another employees review, the employee should only be able to view and edit the review they are writing.
-5. Due to time constraints, the front end does not have to look pretty.
+1. Without any design requirements, functionality shall be priorizied before design.
+2. There does not have to be any validation or authorization on the endpoint.
+3. There does not have to be any login page for the user.
+4. The Employees should have names and a position.
+5. When an employee is added to take part of another employees review, the employee should only be able to view and edit the review they are writing.
+6. Due to time constraints, the front end does not have to look pretty.
+7. Tests are not needed.
+8. The backend URL and PORT should be hardcoded. (No need to setup .env file)
 
 ## Self reflection / Things I should have done differently.
 - I should have made the table `performance_reviews` and `reviews_to_reviewer` into one table. It would have simplified the select and insert queries. It would also still be very logical if not more.
-- I should have started with the frontend to make it contain more functions, and written one frontend function and then coresponding API. As it is now, I have a lot of backend APIs, but not everything is implemented on the frontend.
+- Work division between frontend and backend.
 
 ## File structure
 Backend server is rund from `index.js` in the root folder.
@@ -40,8 +43,8 @@ root
 - [x] Update/ Employees Endpoint
 - [x] View Employees Endpoint
 - [x] View  Performance Reviews Endpoint
-* [ ] Add Performance Reviews Reviews Endpoint
-* [ ] Update  Performance Reviews Reviews Endpoint
+* [ ] Add Performance Reviews Endpoint
+* [ ] Update  Performance Reviews Endpoint
 * [ ] Endpoint to Assign Employees to Participate in Another employee's performance review
 
 ### Frontend
@@ -55,8 +58,8 @@ root
 - [x] Admin can: Add Employees
 - [x] Admin can: Delete Employees
 - [x] Admin can: Update Employees
-- [ ] Admin can: Add Performance Reviews Reviews
-- [ ] Admin can: Update  Performance Reviews Reviews
+- [ ] Admin can: Add Performance Reviews
+- [ ] Admin can: Update  Performance Reviews
 - [ ] Admin can: Assign Employees to Participate in Another employee's performance review
 
 ## Setup
@@ -209,7 +212,6 @@ Example response:
 ]
 ```
 
-## Client Side API
 ### Employee API: Gett all pending reviews that the employee should write
 Send a GET HTTP request to `/api/employees/:employeeID/evaluations/pending`.
 

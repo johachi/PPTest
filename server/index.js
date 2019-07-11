@@ -153,10 +153,6 @@ const server = () => {
 
   // // :employeeID can update a review
   app.post("/api/employees/:employeeID/evaluations/:review", (req, res) => {
-    /*
-    Return all pending reviews to be written by
-    employee with employeeID === :employeeID
-    */
     const employeeID = ~~req.params.employeeID;
     const review = ~~req.params.review;
     const { evaluation } = req.body.data;
@@ -168,31 +164,6 @@ const server = () => {
       })
       .catch(() => {
         res.status(500).send("Could update review.");
-      });
-  });
-
-  app.post("/api/employee/:id/evaluations/", (req, res) => {
-    /*
-    Return all pending reviews to be written by
-    employee with id === :id
-    */
-    const { reviewed, evaluation } = req.body.data;
-    const reviewer = ~~req.params.id;
-
-    knex("performance_reviews")
-      .insert({ reviewed })
-      .returning("id")
-      .then(id => {
-        knex("reviews_to_reviewer")
-          .insert({
-            review: id,
-            reviewer,
-            evaluation
-          })
-          .then(() => res.send());
-      })
-      .catch(err => { 
-        res.status(400).send();
       });
   });
 
